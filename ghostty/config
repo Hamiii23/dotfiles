@@ -1,1 +1,9 @@
-/nix/store/dcdnbjjkyzl3ark29d559j5apanx15xc-home-manager-files/.config/ghostty/config
+theme = catppuccin-mocha
+font-family = "CaskaydiaCove Nerd Font"
+window-padding-x = 10
+window-padding-y = 10
+background = #000000
+background-blur = 10
+background-opacity = 0.9
+resize-overlay-duration = 0s
+
