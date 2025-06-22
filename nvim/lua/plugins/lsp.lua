@@ -18,11 +18,18 @@ return {
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
     })
+
     lspconfig.ts_ls.setup({
       capabilities = capabilities
     })
+
     lspconfig.clangd.setup({
       capabilities = capabilities
+    })
+
+    lspconfig.tailwindcss.setup({
+      capabilities = capabilities,
+      filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
     })
 
     vim.diagnostic.config({
