@@ -6,4 +6,7 @@ background = #000000
 background-blur = 10
 background-opacity = 0.9
 resize-overlay-duration = 0s
-
+cursor-style = block
+cursor-style-blink = false
+cursor-color = 
+cursor-text = 
