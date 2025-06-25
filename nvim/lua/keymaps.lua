@@ -2,7 +2,6 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 local map = vim.keymap.set
 
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
@@ -47,16 +46,16 @@ map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
 map("n", "<leader>fp", function()
-  local filePath = vim.fn.expand("%:~")
-  vim.fn.setreg("+", filePath)
-  print("File path copied to clipboard: " .. filePath)
+    local filePath = vim.fn.expand("%:~")
+    vim.fn.setreg("+", filePath)
+    print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
 
 local isLspDiagnosticsVisible = true
 map("n", "<leader>lx", function()
-  isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-  vim.diagnostic.config({
-    virtual_text = isLspDiagnosticsVisible,
-    underline = isLspDiagnosticsVisible
-  })
+    isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+    vim.diagnostic.config({
+        virtual_text = isLspDiagnosticsVisible,
+        underline = isLspDiagnosticsVisible
+    })
 end, { desc = "Toggle LSP diagnostics" })
