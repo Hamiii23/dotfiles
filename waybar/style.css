@@ -108,12 +108,10 @@ tooltip {
 
 #battery.charging {
   color: #e0def4;
-  background: rgba(156, 207, 216, 0.05);
 }
 
 #battery.critical {
   color: #eb6f92;
-  background: rgba(235, 111, 146, 0.1);
   font-weight: 700;
 }
 

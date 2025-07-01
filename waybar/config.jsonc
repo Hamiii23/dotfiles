@@ -24,12 +24,7 @@
   },
   "hyprland/window": {
     "format": "{}",
-    "max-length": 50,
-    "rewrite": {
-      "(.*) — Mozilla Firefox": "🌐 $1",
-      "(.*) - Visual Studio Code": "💻 $1",
-      "(.*) - Discord": "💬 Discord"
-    }
+    "max-length": 50
   },
   "tray": {
     "icon-size": 18,
