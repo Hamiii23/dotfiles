@@ -107,6 +107,7 @@ alias md="mkdir"
 alias rd="rmdir"
 
 alias x="exit"
+alias c="clear"
 alias vim="nvim"
 
 
