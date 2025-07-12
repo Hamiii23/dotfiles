@@ -34,10 +34,10 @@ map("n", "x", '"_x', opts)
 
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
-map("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
+map("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
-map("n", "L", "<cmd>tabn<CR>")              --go to next
-map("n", "H", "<cmd>tabp<CR>")              --go to pre
+map("n", "L", "<cmd>tabn<CR>") --go to next
+map("n", "H", "<cmd>tabp<CR>") --go to pre
 map("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
 
 map("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })
@@ -46,16 +46,16 @@ map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
 map("n", "<leader>fp", function()
-  local filePath = vim.fn.expand("%:~")
-  vim.fn.setreg("+", filePath)
-  print("File path copied to clipboard: " .. filePath)
+	local filePath = vim.fn.expand("%:~")
+	vim.fn.setreg("+", filePath)
+	print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
 
 local isLspDiagnosticsVisible = true
 map("n", "<leader>lx", function()
-  isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-  vim.diagnostic.config({
-    virtual_text = isLspDiagnosticsVisible,
-    underline = isLspDiagnosticsVisible
-  })
+	isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+	vim.diagnostic.config({
+		virtual_text = isLspDiagnosticsVisible,
+		underline = isLspDiagnosticsVisible,
+	})
 end, { desc = "Toggle LSP diagnostics" })
