@@ -20,6 +20,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.wrap = false
+opt.winborder = "rounded"
 
 opt.swapfile = false
 opt.backup = false

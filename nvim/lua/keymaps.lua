@@ -36,8 +36,8 @@ map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes fil
 
 map("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
-map("n", "L", "<cmd>tabn<CR>") --go to next
-map("n", "H", "<cmd>tabp<CR>") --go to pre
+map("n", "<leader>tn", "<cmd>tabn<CR>") --go to next
+map("n", "<leader>tp", "<cmd>tabp<CR>") --go to pre
 map("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
 
 map("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })

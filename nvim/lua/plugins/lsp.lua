@@ -23,7 +23,37 @@ return {
 			capabilities = capabilities,
 		})
 
+		lspconfig.emmet_language_server.setup({
+			capabilities = capabilities,
+			filetypes = {
+				"html",
+				"css",
+				"eruby",
+				"less",
+				"sass",
+				"scss",
+				"pug",
+				"javascriptreact",
+				"typescriptreact",
+			},
+			init_options = {
+				includeLanguages = {},
+				excludeLanguages = {},
+				extensionsPath = {},
+				preferences = {},
+				showAbbreviationSuggestions = true,
+				showExpandedAbbreviation = "always",
+				showSuggestionsAsSnippets = false,
+				syntaxProfiles = {},
+				variables = {},
+			},
+		})
+
 		lspconfig.clangd.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.gopls.setup({
 			capabilities = capabilities,
 		})
 

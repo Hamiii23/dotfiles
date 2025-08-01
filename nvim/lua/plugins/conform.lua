@@ -12,6 +12,7 @@ return {
 				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				cpp = { "clang-format" },
+				go = { "goimports" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
