@@ -5,6 +5,9 @@ return {
 		local configs = require("nvim-treesitter.configs")
 
 		configs.setup({
+			ignore_install = {},
+			modules = {},
+			auto_install = true,
 			ensure_installed = {
 				"json",
 				"javascript",

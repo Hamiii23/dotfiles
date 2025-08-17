@@ -2,14 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"saghen/blink.cmp",
-		{
-			"folke/lazydev.nvim",
-			opts = {
-				library = {
-					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				},
-			},
-		},
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -17,6 +9,13 @@ return {
 
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
 		})
 
 		lspconfig.ts_ls.setup({
@@ -85,9 +84,19 @@ return {
 		})
 
 		vim.diagnostic.config({
-			virtual_text = true,
+			title = false,
 			underline = true,
+			virtual_text = true,
+			signs = true,
 			update_in_insert = false,
+			severity_sort = true,
+			float = {
+				source = "if_many",
+				style = "minimal",
+				border = "rounded",
+				header = "",
+				prefix = "",
+			},
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {

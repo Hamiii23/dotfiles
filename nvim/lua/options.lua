@@ -12,6 +12,7 @@ local opt = vim.opt
 
 opt.number = true
 opt.relativenumber = true
+vim.opt.guicursor = ""
 
 opt.tabstop = 4
 opt.softtabstop = 4
