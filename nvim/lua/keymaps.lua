@@ -44,6 +44,7 @@ map("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>-", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 map("n", "<leader>fp", function()
 	local filePath = vim.fn.expand("%:~")
