@@ -47,7 +47,7 @@ tooltip {
 #workspaces button.active {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  border-radius: 12px;
+  border-radius: 50px;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
@@ -60,7 +60,7 @@ tooltip {
 #workspaces button:hover:not(.active) {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
 #clock,

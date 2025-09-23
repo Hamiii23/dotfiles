@@ -1,109 +1,124 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 32,
-  "spacing": 6,
-  "modules-left": [
-    "hyprland/window"
-  ],
-  "modules-center": [
-    "hyprland/language",
-    "pulseaudio",
-    "hyprland/workspaces",
-    "hyprland/mode",
-    "custom/media",
-    "clock",
-    "battery"
-  ],
-  "modules-right": [
-    "network",
-    "tray"
-  ],
-  "hyprland/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 50
-  },
-  "tray": {
-    "icon-size": 18,
-    "spacing": 8,
-    "show-passive-items": true,
-    "icons": {
-      "blueman": "bluetooth"
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 6,
+    "modules-left": [
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "hyprland/mode",
+        "clock",
+        "hyprland/workspaces",
+        "custom/media",
+        "battery"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "tray"
+    ],
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {
+        "format": " {}",
+        "max-length": 60
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8,
+        "show-passive-items": true,
+        "icons": {
+            "blueman": "bluetooth"
+        }
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc94b'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "{icon} {capacity}%",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "tooltip-format": "Battery: {capacity}%\nTime remaining: {time}"
+    },
+    "network": {
+        "format-wifi": "󰤨  {essid}",
+        "format-ethernet": "󰈀 Ethernet",
+        "format-linked": "󰤭 {ifname} (No IP)",
+        "format-disconnected": "󰤮 Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
+        "tooltip-format-wifi": "SSID: {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits}/{bandwidthDownBits}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "󰖁 {icon}",
+        "format-muted": "󰖁 ",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋋",
+            "headset": "󰋋",
+            "earphone": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
     }
-  },
-  "clock": {
-    "format": "{:%a, %d %b | %H:%M}",
-    "format-alt": "{:%H:%M:%S}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc94b'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    }
-  },
-  "battery": {
-    "states": {
-      "good": 80,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% {icon}",
-    "format-plugged": "{capacity}% {icon}",
-    "format-alt": "{time} {icon}",
-    "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-    "tooltip-format": "Battery: {capacity}%\nTime remaining: {time}"
-  },
-  "network": {
-    "format-wifi": "{essid} {signalStrength}% 󰤨",
-    "format-ethernet": "Ethernet 󰈀",
-    "format-linked": "{ifname} (No IP) 󰤭",
-    "format-disconnected": "Disconnected 󰤮",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
-    "tooltip-format-wifi": "SSID: {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
-    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits}/{bandwidthDownBits}"
-  },
-  "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": "󰖁 {icon} {format_source}",
-    "format-muted": "󰖁 {format_source}",
-    "format-source": "{volume}% 󰍬",
-    "format-source-muted": "󰍭",
-    "format-icons": {
-      "headphone": "󰋋",
-      "hands-free": "󰋋",
-      "headset": "󰋋",
-      "phone": "󰏲",
-      "portable": "󰏲",
-      "car": "󰄋",
-      "default": ["󰕿", "󰖀", "󰕾"]
-    },
-    "on-click": "pavucontrol",
-    "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
-  },
-  "hyprland/language": {
-    "format": " {}",
-    "format-en": "EN",
-    "format-es": "ES",
-    "format-fr": "FR",
-    "format-de": "DE",
-    "tooltip-format": "Keyboard: {long}"
-  }
 }
