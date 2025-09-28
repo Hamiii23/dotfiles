@@ -4,13 +4,12 @@
     "height": 32,
     "spacing": 6,
     "modules-left": [
-        "hyprland/window"
+        "custom/media"
     ],
     "modules-center": [
         "hyprland/mode",
         "clock",
         "hyprland/workspaces",
-        "custom/media",
         "battery"
     ],
     "modules-right": [
@@ -34,7 +33,7 @@
         }
     },
     "clock": {
-        "format": "{:%I:%M %p}",
+        "format": "󰥔 {:%I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "year",
@@ -86,8 +85,7 @@
                 "󰂂",
                 "󰁹"
             ]
-        },
-        "tooltip-format": "Battery: {capacity}%\nTime remaining: {time}"
+        }
     },
     "network": {
         "format-wifi": "󰤨  {essid}",
@@ -118,7 +116,12 @@
                 "󰕾"
             ]
         },
-        "on-click": "pavucontrol",
+        // "on-click": "pavucontrol",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
+    },
+    "custom/media": {
+        "exec": "~/.config/waybar/scripts/media.sh",
+        "interval": 2
     }
 }

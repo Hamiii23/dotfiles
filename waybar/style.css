@@ -12,14 +12,14 @@
 window#waybar {
     background: transparent;
     border-radius: 12px;
-    padding: 6px 10px;
+    padding: 8px 10px;
     margin: 6px 12px;
     border: none;
     box-shadow: none;
 }
 
 tooltip {
-    background: rgba(25, 23, 36, 0.98);
+    background: rgba(25, 23, 36, 1);
     border: 1px solid rgba(144, 140, 170, 0.3);
     border-radius: 8px;
     color: #e0def4;
@@ -31,7 +31,7 @@ tooltip {
     padding: 2px 4px;
     margin: 0 4px;
     border-radius: 20px;
-    background: rgba(35, 33, 54, 0.8);
+    background: rgba(35, 33, 54, 0.9);
 }
 
 #workspaces button {
@@ -48,17 +48,17 @@ tooltip {
     background: rgba(156, 207, 216, 0.15);
     color: #9ccfd8;
     border-radius: 52px;
-    box-shadow: 0 2px 8px rgba(156, 207, 216, 0.2);
+    box-shadow: 0 2px 6px rgba(156, 207, 216, 0.2);
 }
 
 #workspaces button.urgent {
     background: #eb6f92;
     color: #191724;
-    box-shadow: 0 2px 8px rgba(235, 111, 146, 0.3);
+    box-shadow: 0 2px 6px rgba(235, 111, 146, 0.25);
 }
 
 #workspaces button:hover:not(.active) {
-    background: rgba(156, 207, 216, 0.08);
+    background: rgba(244, 219, 195, 0.1);
     color: #e0def4;
     border-radius: 50px;
 }
@@ -66,7 +66,6 @@ tooltip {
 #clock,
 #battery,
 #pulseaudio,
-#language,
 #tray,
 #network,
 #custom-media,
@@ -74,77 +73,73 @@ tooltip {
     padding: 4px 12px;
     margin: 0 3px;
     border-radius: 50px;
-    background: rgba(35, 33, 54, 0.8);
-    border: 1px solid rgba(144, 140, 170, 0.1);
+    background: rgba(35, 33, 54, 1);
+    border: 1px solid rgba(144, 140, 170, 0.4);
     transition: all 0.2s ease;
+    min-width: 50px;
 }
 
 #window {
     color: #c4a7e7;
-    font-weight: 500;
-    background: rgba(42, 39, 63, 0.8);
 }
 
 #clock {
     font-weight: 600;
-    color: #e0def4;
-}
-
-#clock:hover {
-    background: rgba(42, 39, 63, 0.9);
+    color: #f6c177;
 }
 
 #tray {
-    padding: 4px 8px;
+    color: #ebbcba;
 }
 
 #battery {
     color: #e0def4;
+    font-weight: 600;
 }
 
 #battery.good {
     color: #9ccfd8;
+    font-weight: 600;
 }
 
 #battery.charging {
-    color: #e0def4;
+    color: #31748f;
+    font-weight: 600;
 }
 
 #battery.critical {
     color: #eb6f92;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #network {
-    color: #e0def4;
+    color: #89ddff;
+    font-weight: 600;
 }
 
 #network.disconnected {
     color: #eb6f92;
+    font-weight: 600;
 }
 
 #pulseaudio {
-    color: #e0def4;
+    color: #c4a7e7;
+    font-weight: 600;
 }
 
 #pulseaudio.muted {
-    color: #6e6a86;
-}
-
-#language {
-    color: #e0def4;
-    font-weight: 600;
-    min-width: 28px;
+    color: #4c6b79;
 }
 
 #custom-media {
-    color: #e0def4;
+    font-weight: 600;
+    color: #73daca;
 }
 
+#clock:hover,
 #battery:hover,
 #pulseaudio:hover,
-#language:hover,
 #network:hover,
 #custom-media:hover {
-    background: rgba(42, 39, 63, 0.9);
+    background: rgba(25, 23, 36, 1);
 }
