@@ -44,7 +44,6 @@ map("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>-", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
-map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 map("n", "<leader>fp", function()
 	local filePath = vim.fn.expand("%:~")
@@ -60,3 +59,14 @@ map("n", "<leader>lx", function()
 		underline = isLspDiagnosticsVisible,
 	})
 end, { desc = "Toggle LSP diagnostics" })
+
+vim.keymap.set("n", "<leader>qf", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set("n", "<leader>ql", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })
