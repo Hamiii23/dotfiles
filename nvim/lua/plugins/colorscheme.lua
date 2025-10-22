@@ -2,7 +2,7 @@ return {
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	name = "rose-pine",
-	-- 	-- priority = 1000,
+	-- 	priority = 1000,
 	-- 	opts = {},
 	-- 	config = function()
 	-- 		require("rose-pine").setup({
