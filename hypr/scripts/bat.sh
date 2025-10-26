@@ -26,13 +26,13 @@ get_battery_percentage() {
     echo "0"
 }
 
-# Function to send notification
+# Function to send notification using swaync
 notify() {
     local title="$1"
     local message="$2"
-    local icon="$3"
+    local urgency="$3"
     
-    notify-send -i "$icon" "$title" "$message"
+    notify-send -u "$urgency" "$title" "$message"
 }
 
 # Initialize previous states
@@ -48,13 +48,13 @@ while true; do
     if is_charger_connected; then
         current_state="connected"
         if [[ "$previous_state" != "connected" ]]; then
-            notify "Charger Connected" "Power adapter plugged in" "battery-full-charged"
+            notify "Charger Connected" "Power adapter plugged in" "normal"
             battery_20_notified=false
         fi
     else
         current_state="disconnected"
         if [[ "$previous_state" != "disconnected" && "$previous_state" != "" ]]; then
-            notify "Charger Disconnected" "Power adapter unplugged" "battery-caution"
+            notify "Charger Disconnected" "Power adapter unplugged" "normal"
             battery_80_notified=false
         fi
     fi
@@ -62,7 +62,7 @@ while true; do
     # Battery level notifications
     if [[ "$battery_level" -le 20 && "$battery_20_notified" == false ]]; then
         if ! is_charger_connected; then
-            notify "Low Battery" "Battery is at ${battery_level}%. Please connect charger" "battery-low"
+            notify "Low Battery" "Battery is at ${battery_level}%. Please connect charger" "critical"
             battery_20_notified=true
         fi
     elif [[ "$battery_level" -gt 20 ]]; then
@@ -71,7 +71,7 @@ while true; do
     
     if [[ "$battery_level" -ge 80 && "$battery_80_notified" == false ]]; then
         if is_charger_connected; then
-            notify "Battery Full" "Battery is at ${battery_level}%. Consider disconnecting charger" "battery-full"
+            notify "Battery Full" "Battery is at ${battery_level}%. Consider disconnecting charger" "normal"
             battery_80_notified=true
         fi
     elif [[ "$battery_level" -lt 80 ]]; then

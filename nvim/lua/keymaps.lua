@@ -60,13 +60,21 @@ map("n", "<leader>lx", function()
 	})
 end, { desc = "Toggle LSP diagnostics" })
 
-vim.keymap.set("n", "<leader>qf", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>ql", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "<leader>qf", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+map("n", "<leader>ql", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
-vim.keymap.set("n", "[d", function()
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
+		vim.keymap.set("n", "<CR>", "<CR><cmd>wincmd p<cr>", { buffer = true })
+	end,
+})
+
+map("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Go to previous diagnostic message" })
 
-vim.keymap.set("n", "]d", function()
+map("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic message" })
