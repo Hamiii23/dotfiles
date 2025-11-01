@@ -8,11 +8,11 @@ is_charger_connected() {
     for supply in /sys/class/power_supply/A{C,DP}* /sys/class/power_supply/*; do
         if [[ -f "$supply/online" ]]; then
             if [[ $(cat "$supply/online" 2>/dev/null) == "1" ]]; then
-                return 0  # Connected
+                return 0 # Connected
             fi
         fi
     done
-    return 1  # Not connected
+    return 1 # Not connected
 }
 
 # Function to get battery percentage
@@ -31,8 +31,8 @@ notify() {
     local title="$1"
     local message="$2"
     local urgency="$3"
-    
-    notify-send -u "$urgency" "$title" "$message"
+
+    notify-send "$title" "$message" -u "$urgency"
 }
 
 # Initialize previous states
@@ -43,7 +43,7 @@ battery_80_notified=false
 # Main monitoring loop
 while true; do
     battery_level=$(get_battery_percentage)
-    
+
     # Check charger connection/disconnection
     if is_charger_connected; then
         current_state="connected"
@@ -58,7 +58,7 @@ while true; do
             battery_80_notified=false
         fi
     fi
-    
+
     # Battery level notifications
     if [[ "$battery_level" -le 20 && "$battery_20_notified" == false ]]; then
         if ! is_charger_connected; then
@@ -68,7 +68,7 @@ while true; do
     elif [[ "$battery_level" -gt 20 ]]; then
         battery_20_notified=false
     fi
-    
+
     if [[ "$battery_level" -ge 80 && "$battery_80_notified" == false ]]; then
         if is_charger_connected; then
             notify "Battery Full" "Battery is at ${battery_level}%. Consider disconnecting charger" "normal"
@@ -77,7 +77,7 @@ while true; do
     elif [[ "$battery_level" -lt 80 ]]; then
         battery_80_notified=false
     fi
-    
+
     previous_state="$current_state"
     sleep 2
 done

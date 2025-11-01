@@ -25,7 +25,6 @@ map("n", "<leader>Y", [["+Y]], opts)
 map({ "n", "v" }, "<leader>d", [["_d]])
 
 map("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
-map("n", "<leader>f", vim.lsp.buf.format)
 
 -- Unmaps Q in normal mode
 map("n", "Q", "<nop>")

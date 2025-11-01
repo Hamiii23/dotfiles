@@ -10,8 +10,31 @@ return {
 		"typescript.tsx",
 	},
 	root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
 	handlers = {
-		-- handle rename request for certain code actions like extracting functions / types
 		["_typescript.rename"] = function(_, result, ctx)
 			local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
 			vim.lsp.util.show_document({
