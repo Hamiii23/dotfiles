@@ -24,7 +24,8 @@ if [[ -z $DISPLAY && -z $WAYLAND_DISPLAY && $(tty) == /dev/tty1 ]]; then
     exec Hyprland
 fi
 
-bindkey -s '^F' '~/scripts/tmux_sessionizer\n'
+bindkey -s '^F' '~/scripts/tmux-sessionizer\n'
+bindkey -s '^G' '~/scripts/session-switcher\n'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -35,3 +36,4 @@ export PATH=$PATH:$GOPATH/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/scripts:$PATH"

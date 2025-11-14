@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Install package managers
+sudo pacman -S --needed nodejs npm go rustup
+
+# Setup Rust
+rustup default stable
+
+# Install Pacman packages
+sudo pacman -S --needed lua-language-server stylua clang shellcheck
+
+# Install NPM packages
+sudo npm install -g \
+    typescript-language-server \
+    vscode-langservers-extracted \
+    @tailwindcss/language-server \
+    @olrtg/emmet-language-server \
+    prettier \
+    bash-language-server
+
+# Install Go tools
+go install golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
+# Install Rust components
+rustup component add rust-analyzer rustfmt
+
+echo "Installation complete!"

@@ -13,6 +13,7 @@ vim.lsp.enable({
 	"emmet_language_server",
 	"tailwindcss",
 	"rust_analyzer",
+	"bashls",
 })
 
 vim.diagnostic.config({
@@ -48,5 +49,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf, desc = "Hover documentation" })
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename symbol" })
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf, desc = "Code actions" })
+		vim.keymap.set("n", "<leader>ih", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }))
+		end, { buffer = args.buf, desc = "Toggle inlay hints" })
 	end,
 })
