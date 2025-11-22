@@ -1,42 +1,50 @@
-return {
-	"ThePrimeagen/harpoon",
-	branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim" },
+vim.pack.add({
+	{
+		src = "https://github.com/ThePrimeagen/harpoon",
+		version = "harpoon2",
+	},
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+})
 
-	config = function()
-		local harpoon = require("harpoon")
-		harpoon:setup({
-			global_settings = {
-				save_on_toggle = true,
-				save_on_change = true,
-			},
-		})
-		vim.keymap.set("n", "<leader>a", function()
-			harpoon:list():add()
-		end)
-		vim.keymap.set("n", "<C-e>", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end)
+local harpoon = require("harpoon")
 
-		vim.keymap.set("n", "<C-y>", function()
-			harpoon:list():select(1)
-		end)
-		vim.keymap.set("n", "<C-t>", function()
-			harpoon:list():select(2)
-		end)
-		vim.keymap.set("n", "<C-n>", function()
-			harpoon:list():select(3)
-		end)
-		vim.keymap.set("n", "<C-s>", function()
-			harpoon:list():select(4)
-		end)
-		--
-		-- -- Toggle previous & next buffers stored within Harpoon list
-		vim.keymap.set("n", "H", function()
-			harpoon:list():prev()
-		end)
-		vim.keymap.set("n", "L", function()
-			harpoon:list():next()
-		end)
-	end,
-}
+harpoon:setup({
+	global_settings = {
+		save_on_toggle = true,
+		save_on_change = true,
+	},
+})
+
+local map = vim.keymap.set
+
+map("n", "<leader>a", function()
+	harpoon:list():add()
+end)
+
+map("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+map("n", "<A-q>", function()
+	harpoon:list():select(1)
+end)
+
+map("n", "<A-w>", function()
+	harpoon:list():select(2)
+end)
+
+map("n", "<A-e>", function()
+	harpoon:list():select(3)
+end)
+
+map("n", "<A-r>", function()
+	harpoon:list():select(4)
+end)
+
+map("n", "H", function()
+	harpoon:list():prev()
+end)
+
+map("n", "L", function()
+	harpoon:list():next()
+end)

@@ -33,6 +33,16 @@ map("n", "x", '"_x', opts)
 
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<C-g>", function()
+	local sessions = vim.fn.systemlist("tmux list-sessions -F '#{session_name}'")
+	vim.ui.select(sessions, { prompt = "Switch to session:" }, function(selected)
+		if selected then
+			vim.fn.system("tmux switch-client -t " .. selected)
+		end
+	end)
+end)
+
 map("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
 map("n", "<leader>tn", "<cmd>tabn<CR>") --go to next

@@ -1,27 +1,19 @@
-return {
-	{
-		"windwp/nvim-autopairs",
-		event = { "InsertEnter" },
-		config = function()
-			local autopairs = require("nvim-autopairs")
+vim.pack.add({
+	{ src = "https://github.com/mbbill/undotree" },
+	{ src = "https://github.com/windwp/nvim-autopairs" },
+	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+})
 
-			autopairs.setup({
-				check_ts = true,
-				ts_config = {
-					lua = { "string" },
-					javascript = { "template_string" },
-					java = false,
-				},
-			})
-		end,
+require("nvim-autopairs").setup({
+	check_ts = true,
+	ts_config = {
+		lua = { "string" },
+		javascript = { "template_string" },
+		java = false,
 	},
-	{
-		"christoomey/vim-tmux-navigator",
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	},
-}
+})
+
+require("gitsigns").setup({})
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

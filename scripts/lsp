@@ -16,7 +16,8 @@ sudo npm install -g \
     @tailwindcss/language-server \
     @olrtg/emmet-language-server \
     prettier \
-    bash-language-server
+    bash-language-server \
+    yaml-language-server
 
 # Install Go tools
 go install golang.org/x/tools/gopls@latest

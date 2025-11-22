@@ -14,6 +14,8 @@ vim.lsp.enable({
 	"tailwindcss",
 	"rust_analyzer",
 	"bashls",
+	"yamlls",
+	"prismals",
 })
 
 vim.diagnostic.config({
