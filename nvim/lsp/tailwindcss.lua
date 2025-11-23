@@ -131,6 +131,7 @@ return {
 			"theme/static_src/tailwind.config.ts",
 			"theme/static_src/postcss.config.js",
 			-- Fallback for tailwind v4, where tailwind.config.* is not required anymore
+			"package.json",
 			".git",
 		}
 		local fname = vim.api.nvim_buf_get_name(bufnr)
