@@ -1,70 +1,28 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "b19413d",
-      "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
-    "conform.nvim": {
-      "rev": "1bf8b5b",
-      "src": "https://github.com/stevearc/conform.nvim"
-    },
-    "friendly-snippets": {
-      "rev": "572f566",
-      "src": "https://github.com/rafamadriz/friendly-snippets"
-    },
-    "gitsigns.nvim": {
-      "rev": "cdafc32",
-      "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
+    "conform.nvim": [],
+    "friendly-snippets": [],
+    "gitsigns.nvim": [],
     "harpoon": {
-      "rev": "87b1a35",
-      "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
-    "mini.icons": {
-      "rev": "ff2e4f1",
-      "src": "https://github.com/nvim-mini/mini.icons"
-    },
+    "mini.icons": [],
+    "neovim": [],
     "nvim-autopairs": {
-      "rev": "7a2c97c",
-      "src": "https://github.com/windwp/nvim-autopairs"
+      "rev": "d9e44e5"
     },
-    "nvim-colorizer.lua": {
-      "rev": "81e676d",
-      "src": "https://github.com/NvChad/nvim-colorizer.lua"
-    },
-    "nvim-treesitter": {
-      "rev": "42fc28ba",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
-    "oil.nvim": {
-      "rev": "7e1cd77",
-      "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "plenary.nvim": {
-      "rev": "b9fd522",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
+    "nvim-colorizer.lua": [],
+    "nvim-treesitter": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
     "slimline.nvim": {
-      "rev": "9dfdd3c",
-      "src": "https://github.com/sschleemilch/slimline.nvim"
+      "rev": "b23d623"
     },
-    "snacks.nvim": {
-      "rev": "fe7cfe9",
-      "src": "https://github.com/folke/snacks.nvim"
-    },
-    "undotree": {
-      "rev": "0f1c981",
-      "src": "https://github.com/mbbill/undotree"
-    },
-    "vague.nvim": {
-      "rev": "dba2805",
-      "src": "https://github.com/vague2k/vague.nvim"
-    },
-    "vim-tmux-navigator": {
-      "rev": "c45243d",
-      "src": "https://github.com/christoomey/vim-tmux-navigator"
-    }
+    "snacks.nvim": [],
+    "undotree": [],
+    "vim-tmux-navigator": []
   }
 }

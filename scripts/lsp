@@ -17,7 +17,8 @@ sudo npm install -g \
     @olrtg/emmet-language-server \
     prettier \
     bash-language-server \
-    yaml-language-server
+    yaml-language-server \
+    @prisma/language-server
 
 # Install Go tools
 go install golang.org/x/tools/gopls@latest
