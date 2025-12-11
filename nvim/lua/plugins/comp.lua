@@ -11,8 +11,10 @@ require("blink.cmp").setup({
 		preset = "default",
 		["<C-k>"] = { "select_prev", "fallback" },
 		["<C-j>"] = { "select_next", "fallback" },
-		["<C-space>"] = { "show" },
+		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 		["<C-y>"] = { "select_and_accept", "fallback" },
+		["<C-b>"] = { "scroll_documentation_down", "fallback" },
+		["<C-f>"] = { "scroll_documentation_up", "fallback" },
 	},
 	appearance = {
 		use_nvim_cmp_as_default = true,
