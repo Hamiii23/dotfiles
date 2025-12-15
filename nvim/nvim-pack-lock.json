@@ -1,28 +1,70 @@
 {
   "plugins": {
     "blink.cmp": {
+      "rev": "b19413d",
+      "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
-    "conform.nvim": [],
-    "friendly-snippets": [],
-    "gitsigns.nvim": [],
+    "conform.nvim": {
+      "rev": "9b8fa5e",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "friendly-snippets": {
+      "rev": "572f566",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
+    "gitsigns.nvim": {
+      "rev": "5813e48",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "harpoon": {
+      "rev": "87b1a35",
+      "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
-    "mini.icons": [],
-    "neovim": [],
+    "mini.icons": {
+      "rev": "ff2e4f1",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "neovim": {
+      "rev": "cf2a288",
+      "src": "https://github.com/rose-pine/neovim"
+    },
     "nvim-autopairs": {
-      "rev": "d9e44e5"
+      "rev": "d9e44e5",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
-    "nvim-colorizer.lua": [],
-    "nvim-treesitter": [],
-    "oil.nvim": [],
-    "plenary.nvim": [],
+    "nvim-colorizer.lua": {
+      "rev": "81e676d",
+      "src": "https://github.com/NvChad/nvim-colorizer.lua"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oil.nvim": {
+      "rev": "cbcb3f9",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
     "slimline.nvim": {
-      "rev": "b23d623"
+      "rev": "b23d623",
+      "src": "https://github.com/sschleemilch/slimline.nvim"
     },
-    "snacks.nvim": [],
-    "undotree": [],
-    "vim-tmux-navigator": []
+    "snacks.nvim": {
+      "rev": "fe7cfe9",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "undotree": {
+      "rev": "0f1c981",
+      "src": "https://github.com/mbbill/undotree"
+    },
+    "vim-tmux-navigator": {
+      "rev": "c45243d",
+      "src": "https://github.com/christoomey/vim-tmux-navigator"
+    }
   }
 }
