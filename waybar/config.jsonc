@@ -122,7 +122,7 @@
         "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
     },
     "custom/media": {
-        "exec": "~/scripts/media.sh",
+        "exec": "~/.local/bin/media-controller",
         "interval": 2
     }
 }

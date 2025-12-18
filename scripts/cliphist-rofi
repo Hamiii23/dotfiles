@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Show clipboard history using rofi and copy the selected entry back
+
+selected=$(cliphist list | rofi -dmenu -p "Clipboard:")
+
+if [ -n "$selected" ]; then
+    cliphist decode <<< "$selected" | wl-copy
+fi

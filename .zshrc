@@ -18,14 +18,15 @@ alias rd="rmdir"
 alias x="exit"
 alias c="clear"
 alias vim="nvim"
+alias v="/usr/bin/vim"
 
 # Only start Hyprland on a TTY login, not inside another X/Wayland session or a nested terminal
 if [[ -z $DISPLAY && -z $WAYLAND_DISPLAY && $(tty) == /dev/tty1 ]]; then
     exec Hyprland
 fi
 
-bindkey -s '^F' '~/scripts/tmux-sessionizer\n'
-bindkey -s '^G' '~/scripts/session-switcher\n'
+bindkey -s '^F' 'tmux-sessionizer\n'
+bindkey -s '^G' 'session-switcher\n'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -36,4 +37,5 @@ export PATH=$PATH:$GOPATH/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
