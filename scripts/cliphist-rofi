@@ -5,5 +5,5 @@
 selected=$(cliphist list | rofi -dmenu -p "Clipboard:")
 
 if [ -n "$selected" ]; then
-    cliphist decode <<< "$selected" | wl-copy
+    cliphist decode <<<"$selected" | wl-copy
 fi

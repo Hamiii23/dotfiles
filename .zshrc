@@ -25,8 +25,9 @@ if [[ -z $DISPLAY && -z $WAYLAND_DISPLAY && $(tty) == /dev/tty1 ]]; then
     exec Hyprland
 fi
 
-bindkey -s '^F' 'tmux-sessionizer\n'
-bindkey -s '^G' 'session-switcher\n'
+bindkey -s '^[f' 'tmux-sessionizer\n'
+bindkey -s '^[s' 'session-switcher\n'
+bindkey -s '^[o' 'tmux-windowizer\n'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
