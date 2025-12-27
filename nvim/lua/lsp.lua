@@ -16,6 +16,7 @@ vim.lsp.enable({
 	"bashls",
 	"yamlls",
 	"prismals",
+	"pyright",
 })
 
 vim.diagnostic.config({

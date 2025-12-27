@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Install package managers
-sudo pacman -S --needed nodejs npm go rustup
+sudo pacman -S --needed nodejs npm go rustup python-pipx
 
 # Setup Rust
 rustup default stable
@@ -27,5 +27,9 @@ go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 # Install Rust components
 rustup component add rust-analyzer rustfmt
+
+# Install Python tools
+pipx install pyright
+pipx install ruff
 
 echo "Installation complete!"

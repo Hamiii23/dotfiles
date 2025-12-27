@@ -88,3 +88,7 @@ end, { desc = "Go to previous diagnostic message" })
 map("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic message" })
+
+map("n", "<leader>pu", function()
+	vim.pack.update()
+end, { desc = "Update plugins" })
