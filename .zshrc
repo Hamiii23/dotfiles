@@ -20,9 +20,8 @@ alias c="clear"
 alias vim="nvim"
 alias v="/usr/bin/vim"
 
-# Only start Hyprland on a TTY login, not inside another X/Wayland session or a nested terminal
 if [[ -z $DISPLAY && -z $WAYLAND_DISPLAY && $(tty) == /dev/tty1 ]]; then
-    exec Hyprland
+    exec start-hyprland
 fi
 
 bindkey -s '^[f' 'tmux-sessionizer\n'
