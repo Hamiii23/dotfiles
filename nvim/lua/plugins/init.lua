@@ -1,5 +1,4 @@
 require("plugins.colorscheme")
-require("plugins.colorizer")
 require("plugins.oil")
 require("plugins.comp")
 require("plugins.conform")

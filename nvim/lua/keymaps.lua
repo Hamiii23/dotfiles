@@ -40,12 +40,7 @@ map("n", "<A-o>", function()
 	vim.fn.system("tmux display-popup -E -w 80% -h 60% tmux-windowizer")
 end)
 map("n", "<A-s>", function()
-	local sessions = vim.fn.systemlist("tmux list-sessions -F '#{session_name}'")
-	vim.ui.select(sessions, { prompt = "Switch to session:" }, function(selected)
-		if selected then
-			vim.fn.system("tmux switch-client -t " .. selected)
-		end
-	end)
+	vim.fn.system("tmux display-popup -E -w 80% -h 60% session-switcher")
 end)
 
 map("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab

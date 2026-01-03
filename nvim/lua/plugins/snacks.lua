@@ -2,7 +2,9 @@ vim.pack.add({
 	{ src = "https://github.com/folke/snacks.nvim" },
 })
 
-require("snacks").setup({
+local snacks = require("snacks")
+
+snacks.setup({
 	styles = {
 		input = {
 			keys = {
@@ -34,45 +36,45 @@ require("snacks").setup({
 local map = vim.keymap.set
 
 map("n", "<leader>lg", function()
-	require("snacks").lazygit()
+	snacks.lazygit()
 end, { desc = "Lazygit" })
 
 map("n", "<leader>gl", function()
-	require("snacks").lazygit.log()
+	snacks.lazygit.log()
 end, { desc = "Lazygit Logs" })
 
 map("n", "<leader>gb", function()
-	require("snacks").picker.git_branches({ layout = "select" })
+	snacks.picker.git_branches({ layout = "select" })
 end, { desc = "Pick and Switch Git Branches" })
 
 map("n", "<leader>rN", function()
-	require("snacks").rename.rename_file()
+	snacks.rename.rename_file()
 end, { desc = "Fast Rename Current File" })
 
 map("n", "<leader>bd", function()
-	require("snacks").bufdelete()
+	snacks.bufdelete()
 end, { desc = "Delete or Close Buffer  (Confirm)" })
 
 map("n", "<leader>ff", function()
-	require("snacks").picker.files()
+	snacks.picker.files()
 end, { desc = "Find Files (Snacks Picker)" })
 
 map("n", "<leader>fc", function()
-	require("snacks").picker.files({ cwd = vim.fn.stdpath("config") })
+	snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Find Config File" })
 
 map("n", "<leader>fg", function()
-	require("snacks").picker.grep()
+	snacks.picker.grep()
 end, { desc = "Grep word" })
 
 map({ "n", "x" }, "<leader>fw", function()
-	require("snacks").picker.grep_word()
+	snacks.picker.grep_word()
 end, { desc = "Search Visual selection or Word" })
 
 map("n", "<leader>fk", function()
-	require("snacks").picker.keymaps({ layout = "ivy" })
+	snacks.picker.keymaps({ layout = "ivy" })
 end, { desc = "Search Keymaps (Snacks Picker)" })
 
 map("n", "<leader>fh", function()
-	require("snacks").picker.help()
+	snacks.picker.help()
 end, { desc = "Help Pages" })
