@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+import json
+from datetime import datetime
+
+import requests
+
+
+def get_location():
+    """Get location from IP address"""
+    try:
+        response = requests.get("http://ip-api.com/json/", timeout=5)
+        data = response.json()
+        if data["status"] == "success":
+            return data["lat"], data["lon"], data["city"]
+    except:
+        pass
+    return None, None, "Unknown"
+
+
+def get_weather_icon(code, is_day=1):
+    """Map weather codes to nerd font icons"""
+    weather_icons = {
+        0: "󰖙",  # Clear sky
+        1: "󰖕",  # Mainly clear
+        2: "󰖕",  # Partly cloudy
+        3: "󰖐",  # Overcast
+        45: "󰖑",  # Fog
+        48: "󰖑",  # Depositing rime fog
+        51: "󰖗",  # Light drizzle
+        53: "󰖗",  # Moderate drizzle
+        55: "󰖗",  # Dense drizzle
+        61: "󰖖",  # Slight rain
+        63: "󰖖",  # Moderate rain
+        65: "󰖖",  # Heavy rain
+        71: "󰼶",  # Slight snow
+        73: "󰼶",  # Moderate snow
+        75: "󰼶",  # Heavy snow
+        77: "󰼶",  # Snow grains
+        80: "󰖖",  # Slight rain showers
+        81: "󰖖",  # Moderate rain showers
+        82: "󰖖",  # Violent rain showers
+        85: "󰼶",  # Slight snow showers
+        86: "󰼶",  # Heavy snow showers
+        95: "󰖓",  # Thunderstorm
+        96: "󰖓",  # Thunderstorm with hail
+        99: "󰖓",  # Thunderstorm with heavy hail
+    }
+
+    icon = weather_icons.get(code, "󰖐")
+
+    # Use moon icon for clear nights
+    if code in [0, 1] and is_day == 0:
+        icon = "󰖔"
+
+    return icon
+
+
+def get_weather(lat, lon):
+    """Fetch weather from Open-Meteo API (free, no API key needed)"""
+    try:
+        url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,weather_code,is_day&temperature_unit=celsius&timezone=auto"
+        response = requests.get(url, timeout=10)
+        data = response.json()
+
+        current = data["current"]
+        temp = round(current["temperature_2m"])
+        weather_code = current["weather_code"]
+        is_day = current["is_day"]
+
+        icon = get_weather_icon(weather_code, is_day)
+
+        return {
+            "text": f"{icon} {temp}°C",
+            "tooltip": f"Temperature: {temp}°C\nWeather Code: {weather_code}",
+            "class": "weather",
+        }
+    except Exception as e:
+        return {
+            "text": "󰖐 --°C",
+            "tooltip": f"Error: {str(e)}",
+            "class": "weather-error",
+        }
+
+
+def main():
+    lat, lon, city = get_location()
+
+    if lat and lon:
+        weather = get_weather(lat, lon)
+        weather["tooltip"] = f"{city}\n{weather['tooltip']}"
+    else:
+        weather = {
+            "text": "󰖐 --°C",
+            "tooltip": "Unable to get location",
+            "class": "weather-error",
+        }
+
+    print(json.dumps(weather))
+
+
+if __name__ == "__main__":
+    main()
