@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -e
+
+sudo pacman -S --needed \
+    ttf-jetbrains-mono-nerd ttf-firacode-nerd ttf-cascadia-code-nerd \
+    ttf-meslo-nerd ttf-hack-nerd noto-fonts noto-fonts-emoji
+
+# Audio
+sudo pacman -S --needed \
+    pipewire pipewire-pulse pipewire-alsa wireplumber pavucontrol
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+
+# File directory
+mkdir -p ~/.local/bin ~/Downloads ~/Documents ~/Desktop ~/dev ~/sandbox ~/Pictures ~/Music ~/Videos
+
+# Base packages
+sudo pacman -S --needed \
+    ghostty waybar swww swaync tmux rofi hypridle hyprlock thunar \
+    firefox zsh fzf zsh-autosuggestions zsh-syntax-highlighting \
+    network-manager-applet wl-clipboard cliphist network-manager-applet brightnessctl \
+    playerctl nwg-look lazygit vlc vlc-plugins-all swayimg zip unzip p7zip
+
+# For Thunar
+sudo pacman -S --needed \
+    gvfs gvfs-mtp gvfs-afc gvfs-gphoto2 gvfs-smb tumbler thunar-volman
+
+# Oh My Zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+# Zsh plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" 2>/dev/null || true
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 2>/dev/null || true
+
+# Chaotic AUR
+if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
+    sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+    echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Sy
+fi
+
+# Clone dotfiles
+cd dev
+
+if [ ! -d dotfiles ]; then
+    git clone https://github.com/Hamiii23/dotfiles.git
+fi
+
+cp -r ~/dev/dotfiles/scripts/* ~/.local/bin/
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -fsSL https://bun.com/install | bash
+lsp
+
+cp -r ~/dev/dotfiles/ghostty ~/.config/
+
+cp -r ~/dev/dotfiles/nvim ~/.config/
+mkdir -p ~/.cache/nvim
+
+cp -r ~/dev/dotfiles/rofi ~/.config/
+cp -r ~/dev/dotfiles/swaync ~/.config/
+cp -r ~/dev/dotfiles/waybar ~/.config/
+
+cp -r ~/dev/dotfiles/.zshrc ~/.zshrc
+cp -r ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+~/.tmux/plugins/tpm/bin/install_plugins
+
+# Change shell to Zsh
+chsh -s "$(which zsh)"
+
+# Paru
+if ! command -v paru &>/dev/null; then
+    sudo pacman -S --needed base-devel git
+    cd /tmp
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si --noconfirm
+fi
+
+# AUR Packages
+paru -S --needed neovim-nightly-bin wlogout wl-clip-persist hyprshot
+
+# Fonts
+paru -S --needed maplemono-nf-cn-unhinted
+
+# Docker
+sudo pacman -S --needed --noconfirm docker docker-buildx docker-compose
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo usermod -aG docker "$(whoami)"
+
+# Theme
+
+paru -S --needed --noconfirm gtk-engine-murrine sassc gnome-themes-extra \
+    catppuccin-gtk-theme-git tela-icon-theme
