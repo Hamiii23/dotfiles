@@ -18,7 +18,7 @@ sudo pacman -S --needed \
     ghostty waybar swww swaync tmux rofi hypridle hyprlock thunar \
     firefox zsh fzf zsh-autosuggestions zsh-syntax-highlighting \
     network-manager-applet wl-clipboard cliphist network-manager-applet brightnessctl \
-    playerctl nwg-look lazygit vlc vlc-plugins-all swayimg zip unzip p7zip
+    playerctl nwg-look lazygit vlc vlc-plugins-all swayimg zip unzip p7zip ripgrep
 
 # For Thunar
 sudo pacman -S --needed \
