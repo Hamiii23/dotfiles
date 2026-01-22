@@ -2,7 +2,9 @@
     "layer": "top",
     "position": "top",
     "height": 32,
-    "spacing": 6,
+    "spacing": 8,
+    "margin-left": 10,
+    "margin-right": 10,
     "modules-left": [
         "custom/media"
     ],
@@ -18,20 +20,15 @@
         "tray",
         "custom/notification"
     ],
-    "hyprland/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "hyprland/window": {
-        "format": " {}",
-        "max-length": 60
-    },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 8,
-        "show-passive-items": true,
-        "icons": {
-            "blueman": "bluetooth"
-        }
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": []
+        },
+        "format": "{icon}",
+        "sort-by-number": true
     },
     "clock": {
         "format": "󰥔 {:%I:%M %p}",
@@ -51,6 +48,7 @@
         }
     },
     "battery": {
+        "interval": 30,
         "states": {
             "good": 80,
             "warning": 30,
@@ -58,55 +56,44 @@
         },
         "format": "{icon} {capacity}%",
         "format-full": "{icon} {capacity}%",
-        "format-charging": "{icon} {capacity}%",
-        "format-plugged": "{icon} {capacity}%",
-        "format-alt": "{icon} {capacity}%",
-        "format-icons": {
-            "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
-            ],
-            "default": [
-                "󰁺",
-                "󰁻",
-                "󰁼",
-                "󰁽",
-                "󰁾",
-                "󰁿",
-                "󰂀",
-                "󰂁",
-                "󰂂",
-                "󰁹"
-            ]
-        }
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": [
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "{timeTo}\nCapacity: {capacity}%\nHealth: {health}%"
     },
     "network": {
+        "interval": 3,
         "format-wifi": "󰤨  {essid}",
         "format-ethernet": "󰈀 Ethernet",
-        "format-linked": "󰤭 {ifname} (No IP)",
+        "format-linked": "󰤭  {ifname}",
         "format-disconnected": "󰤮 Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-alt": "󰩟 {ipaddr}/{cidr}",
         "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
-        "tooltip-format-wifi": "SSID: {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
-        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits}/{bandwidthDownBits}"
+        "tooltip-format-wifi": "󰤨 {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits} ↑ / {bandwidthDownBits} ↓",
+        "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": "󰖁 {icon}",
-        "format-muted": "󰖁 ",
+        "format-muted": "󰖁 Muted",
         "format-icons": {
             "headphone": "󰋋",
-            "hands-free": "󰋋",
-            "headset": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
             "earphone": "󰋎",
             "phone": "󰏲",
             "portable": "󰏲",
@@ -117,12 +104,35 @@
                 "󰕾"
             ]
         },
-        // "on-click": "pavucontrol",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
         "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "show-passive-items": true
     },
     "custom/media": {
         "exec": "~/.local/bin/media-controller",
-        "interval": 2
+        "interval": 2,
+        "format": "{}",
+        "max-length": 40,
+        "return-type": "json"
+    },
+    "custom/notification": {
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂜",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "tooltip": false
     }
 }
