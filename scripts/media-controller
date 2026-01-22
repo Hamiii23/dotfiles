@@ -2,24 +2,38 @@
 
 MAX=25
 
-STATUS=$(playerctl status 2>/dev/null || echo "Stopped")
-
-if [ "$STATUS" = "Playing" ]; then
-    ICON=" "
-elif [ "$STATUS" = "Paused" ]; then
-    ICON=" "
-else
-    ICON=" "
+if ! playerctl status &>/dev/null; then
+    echo '{"text":" Nothing Playing","class":"stopped"}'
+    exit 0
 fi
 
-TITLE=$(playerctl metadata title 2>/dev/null || echo "")
+STATUS=$(playerctl status)
 
-if [ -z "$TITLE" ]; then
-    TITLE="Nothing Playing"
-fi
+case "$STATUS" in
+Playing)
+    ICON=""
+    CLASS="playing"
+    ;;
+Paused)
+    ICON=""
+    CLASS="paused"
+    ;;
+*)
+    echo '{"text":" Nothing Playing","class":"stopped"}'
+    exit 0
+    ;;
+esac
 
-if [ ${#TITLE} -gt $MAX ]; then
-    TITLE="${TITLE:0:$MAX}…"
-fi
+TITLE=$(playerctl metadata --format '{{ title }}')
 
-echo "$ICON $TITLE"
+[ -z "$TITLE" ] && TITLE="Unknown Title"
+
+TITLE=$(printf "%s" "$TITLE" | awk -v max="$MAX" '
+{
+    if (length($0) > max)
+        print substr($0, 1, max) "…"
+    else
+        print
+}')
+
+printf '{"text":"%s %s","class":"%s"}\n' "$ICON" "$TITLE" "$CLASS"
