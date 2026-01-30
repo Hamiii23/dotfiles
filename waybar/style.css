@@ -25,6 +25,7 @@ window#waybar {
 #network,
 #tray,
 #custom-media,
+#custom-weather,
 #custom-notification {
   margin: 0 3px;
   padding: 4px 12px;
@@ -39,6 +40,7 @@ window#waybar {
 
 #workspaces {
   padding: 2px 4px;
+  border-radius: 10px;
 }
 
 #workspaces button {
@@ -56,8 +58,9 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(180, 170, 255, 0.18);
   color: #ffffff;
+  padding: 4px 20px;
 }
 
 #workspaces button.urgent {
@@ -102,12 +105,20 @@ window#waybar {
 
 #pulseaudio.muted {
   color: #6f7282;
-  background: rgba(255, 255, 255, 0.03);
 }
 
 #custom-media {
   color: #a6dcef;
   font-style: italic;
+}
+
+#custom-weather {
+  color: #ffd699;
+  font-weight: 600;
+}
+
+#custom-weather.weather-error {
+  color: #ff6b6b;
 }
 
 #custom-notification {

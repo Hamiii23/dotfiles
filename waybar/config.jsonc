@@ -6,7 +6,8 @@
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": [
-        "custom/media"
+        "custom/media",
+        "custom/weather"
     ],
     "modules-center": [
         "hyprland/mode",
@@ -57,7 +58,6 @@
         "format": "{icon} {capacity}%",
         "format-full": "{icon} {capacity}%",
         "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󰚥 {capacity}%",
         "format-icons": [
             "󰂃",
             "󰁺",
@@ -83,7 +83,7 @@
         "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
         "tooltip-format-wifi": "󰤨 {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
         "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits} ↑ / {bandwidthDownBits} ↓",
-        "on-click": "nm-connection-editor"
+        "on-click-right": "nm-connection-editor"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -119,6 +119,13 @@
         "format": "{}",
         "max-length": 40,
         "return-type": "json"
+    },
+    "custom/weather": {
+        "exec": "~/.local/bin/waybar-weather",
+        "interval": 600,
+        "format": "{}",
+        "return-type": "json",
+        "tooltip": true
     },
     "custom/notification": {
         "format": "{icon}",
