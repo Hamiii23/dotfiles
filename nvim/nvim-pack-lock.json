@@ -1,69 +1,70 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "b19413d",
+      "rev": "4b18c32adef2898f95cdef6192cbd5796c1a332d",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
     "conform.nvim": {
-      "rev": "9b8fa5e",
+      "rev": "c2526f1cde528a66e086ab1668e996d162c75f4f",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "friendly-snippets": {
-      "rev": "572f566",
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "5813e48",
+      "rev": "1ce96a464fdbc24208e24c117e2021794259005d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "harpoon": {
-      "rev": "87b1a35",
+      "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
     "mini.icons": {
-      "rev": "ff2e4f1",
+      "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "neovim": {
-      "rev": "cf2a288",
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"
     },
     "nvim-autopairs": {
-      "rev": "d9e44e5",
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-colorizer.lua": {
-      "rev": "81e676d",
+      "rev": "338409dd8a6ed74767bad3eb5269f1b903ffb3cf",
       "src": "https://github.com/NvChad/nvim-colorizer.lua"
     },
     "nvim-treesitter": {
-      "rev": "42fc28ba",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'master'"
     },
     "oil.nvim": {
-      "rev": "cbcb3f9",
+      "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
-      "rev": "b9fd522",
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "slimline.nvim": {
-      "rev": "b23d623",
+      "rev": "b23d6239ae06d7b422b30b227756971348ffcd68",
       "src": "https://github.com/sschleemilch/slimline.nvim"
     },
     "snacks.nvim": {
-      "rev": "fe7cfe9",
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "undotree": {
-      "rev": "0f1c981",
+      "rev": "fc28931fbfba66ab75d9af23fe46ffbbb9de6e8c",
       "src": "https://github.com/mbbill/undotree"
     },
     "vim-tmux-navigator": {
-      "rev": "c45243d",
+      "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
       "src": "https://github.com/christoomey/vim-tmux-navigator"
     }
   }

@@ -2,7 +2,7 @@ vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable({
+local servers = {
 	"lua_ls",
 	"gopls",
 	"clangd",
@@ -17,7 +17,11 @@ vim.lsp.enable({
 	"yamlls",
 	"prismals",
 	"pyright",
-})
+}
+
+for _, server in ipairs(servers) do
+	vim.lsp.enable(server)
+end
 
 vim.diagnostic.config({
 	title = false,

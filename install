@@ -87,7 +87,7 @@ if ! command -v paru &>/dev/null; then
 fi
 
 # AUR Packages
-paru -S --needed neovim-nightly-bin wlogout wl-clip-persist hyprshot
+paru -S --needed neovim-git wlogout wl-clip-persist hyprshot
 
 # Fonts
 paru -S --needed maplemono-nf-cn-unhinted
