@@ -82,6 +82,9 @@ cp -r ~/dev/dotfiles/waybar ~/.config/
 cp ~/dev/dotfiles/.zshrc ~/.zshrc
 cp ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
 
+cp -r ~/dev/dotfiles/gtk-3.0 ~/.config/
+cp -r ~/dev/dotfiles/gtk-4.0 ~/.config/
+
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
