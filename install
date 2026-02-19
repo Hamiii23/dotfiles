@@ -16,9 +16,9 @@ mkdir -p ~/.local/bin ~/Downloads ~/Documents ~/Desktop ~/dev ~/sandbox ~/Pictur
 # Base packages
 sudo pacman -S --needed \
     ghostty waybar swww swaync tmux rofi hypridle hyprlock thunar \
-    firefox zsh fzf zsh-autosuggestions zsh-syntax-highlighting \
-    network-manager-applet wl-clipboard cliphist network-manager-applet brightnessctl \
-    playerctl nwg-look lazygit vlc vlc-plugins-all swayimg zip unzip p7zip ripgrep \
+    firefox zsh fzf \
+    wl-clipboard cliphist network-manager-applet brightnessctl \
+    playerctl nwg-look lazygit vlc swayimg zip unzip p7zip ripgrep \
     xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
 
 # For Thunar
@@ -44,17 +44,31 @@ if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
     sudo pacman -Sy
 fi
 
+# Paru
+if ! command -v paru &>/dev/null; then
+    sudo pacman -S --needed base-devel git
+    cd /tmp
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si --noconfirm
+    cd ~
+fi
+
+# AUR Packages
+paru -S --needed neovim-git wlogout wl-clip-persist hyprshot
+
+# Fonts
+paru -S --needed maplemono-nf-cn-unhinted
+
 # Clone dotfiles
-cd dev
+cd ~/dev
 
 if [ ! -d dotfiles ]; then
     git clone https://github.com/Hamiii23/dotfiles.git
 fi
 
 cp -r ~/dev/dotfiles/scripts/* ~/.local/bin/
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-curl -fsSL https://bun.com/install | bash
-lsp
+curl -fsSL https://bun.sh/install | bash
 
 cp -r ~/dev/dotfiles/ghostty ~/.config/
 
@@ -65,8 +79,8 @@ cp -r ~/dev/dotfiles/rofi ~/.config/
 cp -r ~/dev/dotfiles/swaync ~/.config/
 cp -r ~/dev/dotfiles/waybar ~/.config/
 
-cp -r ~/dev/dotfiles/.zshrc ~/.zshrc
-cp -r ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
+cp ~/dev/dotfiles/.zshrc ~/.zshrc
+cp ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -77,28 +91,11 @@ fi
 # Change shell to Zsh
 chsh -s "$(which zsh)"
 
-# Paru
-if ! command -v paru &>/dev/null; then
-    sudo pacman -S --needed base-devel git
-    cd /tmp
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si --noconfirm
-fi
-
-# AUR Packages
-paru -S --needed neovim-git wlogout wl-clip-persist hyprshot
-
-# Fonts
-paru -S --needed maplemono-nf-cn-unhinted
-
 # Docker
-sudo pacman -S --needed --noconfirm docker docker-buildx docker-compose
-sudo systemctl start docker.service
-sudo systemctl enable docker.service
+sudo pacman -S --needed docker docker-buildx docker-compose
+sudo systemctl enable --now docker.service
 sudo usermod -aG docker "$(whoami)"
 
 # Theme
-
-paru -S --needed --noconfirm gtk-engine-murrine sassc gnome-themes-extra \
+paru -S --needed gtk-engine-murrine sassc gnome-themes-extra \
     catppuccin-gtk-theme-git tela-icon-theme
