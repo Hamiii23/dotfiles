@@ -1,5 +1,3 @@
-vim.cmd("let g:netrw_banner = 0 ")
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
@@ -14,7 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+	group = vim.api.nvim_create_augroup("no_auto_comment", { clear = true }),
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 	end,
@@ -52,8 +50,6 @@ opt.background = "dark"
 
 opt.scrolloff = 8
 opt.signcolumn = "yes"
-
-opt.backspace = { "start", "eol", "indent" }
 
 opt.splitright = true
 opt.splitbelow = true

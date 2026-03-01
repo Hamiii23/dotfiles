@@ -5,14 +5,6 @@ vim.pack.add({
 local snacks = require("snacks")
 
 snacks.setup({
-	styles = {
-		input = {
-			keys = {
-				n_esc = { "<C-c>", { "cmp_close", "cancel" }, mode = "n", expr = true },
-				i_esc = { "<C-c>", { "cmp_close", "stopinsert" }, mode = "i", expr = true },
-			},
-		},
-	},
 	picker = {
 		enabled = true,
 		matchers = {
@@ -38,10 +30,6 @@ local map = vim.keymap.set
 map("n", "<leader>lg", function()
 	snacks.lazygit()
 end, { desc = "Lazygit" })
-
-map("n", "<leader>gl", function()
-	snacks.lazygit.log()
-end, { desc = "Lazygit Logs" })
 
 map("n", "<leader>gb", function()
 	snacks.picker.git_branches({ layout = "select" })
@@ -70,10 +58,6 @@ end, { desc = "Grep word" })
 map({ "n", "x" }, "<leader>fw", function()
 	snacks.picker.grep_word()
 end, { desc = "Search Visual selection or Word" })
-
-map("n", "<leader>fk", function()
-	snacks.picker.keymaps({ layout = "ivy" })
-end, { desc = "Search Keymaps (Snacks Picker)" })
 
 map("n", "<leader>fh", function()
 	snacks.picker.help()

@@ -1,38 +1,31 @@
-local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
 
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
-map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move current line down" })
-map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move current line up" })
+-- Line moving
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 
-map("n", "J", "mzJ`z")
 map("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 map("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 
-map("v", "<", "<gv", opts)
-map("v", ">", ">gv", opts)
+-- Indent and stay in visual
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
-map("x", "<leader>p", [["_dP]])
-map("v", "p", '"_dp', opts)
-map("n", "<leader>Y", [["+Y]], opts)
+-- Search
+map("n", "<Esc>", "<cmd>nohl<CR>", { desc = "Clear search highlight" })
 
-map({ "n", "v" }, "<leader>d", [["_d]])
-
-map("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
-
--- Unmaps Q in normal mode
+-- Unmap Q
 map("n", "Q", "<nop>")
 
-map("n", "x", '"_x', opts)
+-- Chmod
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
-
+-- Tmux
 map("n", "<A-f>", function()
 	vim.fn.system("tmux display-popup -E -w 80% -h 60% tmux-sessionizer")
 end)
@@ -43,51 +36,40 @@ map("n", "<A-s>", function()
 	vim.fn.system("tmux display-popup -E -w 80% -h 60% session-switcher")
 end)
 
-map("n", "<leader>to", "<cmd>tabnew<CR>") --open new tab
-map("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
-map("n", "<leader>tn", "<cmd>tabn<CR>") --go to next
-map("n", "<leader>tp", "<cmd>tabp<CR>") --go to pre
-map("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
+-- Splits
+map("n", "<leader>|", "<C-w>v", { desc = "Split vertically" })
+map("n", "<leader>-", "<C-w>s", { desc = "Split horizontally" })
+map("n", "<leader>se", "<C-w>=", { desc = "Equal split size" })
+map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+map("n", "<leader>sm", "<C-w>|<C-w>_", { desc = "Maximize split" })
 
-map("n", "<leader>|", "<C-w>v", { desc = "Split window vertically" })
-map("n", "<leader>-", "<C-w>s", { desc = "Split window horizontally" })
-map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
-
-map("n", "<leader>fp", function()
-	local filePath = vim.fn.expand("%:~")
-	vim.fn.setreg("+", filePath)
-	print("File path copied to clipboard: " .. filePath)
-end, { desc = "Copy file path to clipboard" })
-
-local isLspDiagnosticsVisible = true
+-- Diagnostics
+local diag_visible = true
 map("n", "<leader>lx", function()
-	isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-	vim.diagnostic.config({
-		virtual_text = isLspDiagnosticsVisible,
-		underline = isLspDiagnosticsVisible,
-	})
-end, { desc = "Toggle LSP diagnostics" })
+	diag_visible = not diag_visible
+	vim.diagnostic.enable(diag_visible)
+end, { desc = "Toggle diagnostics" })
 
-map("n", "<leader>qf", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-map("n", "<leader>ql", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf" },
-	callback = function()
-		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
-		vim.keymap.set("n", "<CR>", "<CR><cmd>wincmd p<cr>", { buffer = true })
-	end,
-})
+map("n", "<leader>qf", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+map("n", "<leader>ql", vim.diagnostic.setloclist, { desc = "Diagnostics to loclist" })
 
 map("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = "Go to previous diagnostic message" })
-
+end, { desc = "Previous diagnostic" })
 map("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = "Go to next diagnostic message" })
+end, { desc = "Next diagnostic" })
 
+-- Quickfix
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		map("n", "q", "<cmd>close<CR>", { buffer = true })
+		map("n", "<CR>", "<CR><cmd>wincmd p<CR>", { buffer = true })
+	end,
+})
+
+-- Package management
 map("n", "<leader>pu", function()
 	vim.pack.update()
 end, { desc = "Update plugins" })
