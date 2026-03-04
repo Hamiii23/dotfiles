@@ -41,11 +41,11 @@ map("n", "<A-r>", function()
 	harpoon:list():select(4)
 end)
 
-map("n", "<A-h>", function()
+map("n", "H", function()
 	harpoon:list():prev()
 end)
 
-map("n", "<A-l>", function()
+map("n", "L", function()
 	harpoon:list():next()
 end)
 map("n", "<leader>hc", function()

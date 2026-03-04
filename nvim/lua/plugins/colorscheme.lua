@@ -37,7 +37,6 @@ vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#000000" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { bg = "#000000" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000" })
-vim.api.nvim_set_hl(0, "LspInlayHint", { bg = "NONE", fg = vim.api.nvim_get_hl(0, { name = "LspInlayHint" }).fg })
 
 require("slimline").setup({
 	style = "fg",
