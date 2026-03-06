@@ -76,6 +76,7 @@ cp ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
 
 cp -r ~/dev/dotfiles/gtk-3.0 ~/.config/
 cp -r ~/dev/dotfiles/gtk-4.0 ~/.config/
+cp -r ~/dev/dotfiles/xdg-desktop-potal ~/.config/
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
