@@ -25,15 +25,6 @@ sudo pacman -S --needed \
 sudo pacman -S --needed \
     gvfs gvfs-mtp gvfs-afc gvfs-gphoto2 gvfs-smb tumbler thunar-volman
 
-# Oh My Zsh
-if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
-
-# Zsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" 2>/dev/null || true
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 2>/dev/null || true
-
 # Chaotic AUR
 if ! grep -q "\[chaotic-aur\]" /etc/pacman.conf; then
     sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
@@ -80,6 +71,7 @@ cp -r ~/dev/dotfiles/swaync ~/.config/
 cp -r ~/dev/dotfiles/waybar ~/.config/
 
 cp ~/dev/dotfiles/.zshrc ~/.zshrc
+cp ~/dev/dotfiles/.p10k.zsh ~/.p10k.zsh
 cp ~/dev/dotfiles/.tmux.conf ~/.tmux.conf
 
 cp -r ~/dev/dotfiles/gtk-3.0 ~/.config/
