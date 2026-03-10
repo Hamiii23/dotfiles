@@ -1,66 +1,270 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 14px;
+  all: unset;
+  font-family: "Cantarell", "Noto Sans", "DejaVu Sans", sans-serif;
+}
+
+.control-center {
+  background: rgba(16, 16, 22, 0.97);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list > row,
+.control-center-list > row:focus,
+.control-center-list > row:hover {
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.notification-window {
+  margin: 4px 0;
+  padding: 0;
+  background: transparent;
+}
+
+.notification-row {
+  outline: none;
+  background: transparent;
+  border-radius: 22px;
+}
+
+.notification-row > * {
+  border-radius: 22px;
 }
 
 .notification {
-  background-color: #1e1e2e;
-  border: 1px solid #313244;
-  border-left: 3px solid #89b4fa;
-  border-radius: 10px;
-  margin: 8px;
+  border-radius: 22px;
+  background: rgba(20, 20, 28, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  margin: 6px 0;
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  min-width: 280px;
 }
 
-.notification-content {
-  background: transparent;
-  padding: 14px;
-  margin: 0;
-}
-
-.notification-content .app-name {
-  color: #7f849c;
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-.notification-content .summary {
-  color: #cdd6f4;
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.notification-content .body {
-  color: #a6adc8;
-  line-height: 1.4;
-  margin-top: 4px;
-}
-
-.close-button {
-  background-color: transparent;
-  color: #6c7086;
-  border-radius: 6px;
-  padding: 4px;
-  margin: 8px;
-}
-
-.close-button:hover {
-  background-color: #313244;
-  color: #bac2de;
-}
-
-.notification.critical {
-  border-left-color: #f38ba8;
-  background-color: #1e1e2e;
-}
-
-.notification.critical .summary {
-  color: #f38ba8;
+.notification > * {
+  border-radius: 22px;
 }
 
 .notification.low {
-  opacity: 0.9;
-  border-left-color: #6c7086;
+  border-color: rgba(255, 255, 255, 0.07);
+  background: rgba(20, 20, 26, 0.82);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.notification.low .notification-app-name {
+  color: rgba(160, 160, 185, 0.65);
+}
+
+.notification.low .notification-summary {
+  color: rgba(210, 210, 225, 0.85);
+}
+
+.notification.normal {
+  border-color: rgba(99, 160, 255, 0.22);
+  background: rgba(18, 20, 30, 0.88);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(99, 160, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.notification.normal .notification-app-name {
+  color: rgba(99, 160, 255, 0.75);
+}
+
+.notification.critical {
+  border-color: rgba(255, 75, 75, 0.35);
+  background: rgba(28, 16, 16, 0.88);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 75, 75, 0.1),
+    inset 0 1px 0 rgba(255, 160, 160, 0.06);
+}
+
+.notification.critical .notification-app-name {
+  color: rgba(255, 110, 110, 0.85);
+}
+
+.notification.critical .notification-summary {
+  color: rgba(255, 230, 230, 0.97);
+}
+
+.notification.critical .notification-body {
+  color: rgba(220, 180, 180, 0.8);
+}
+
+.notification.critical .close-button:hover {
+  background: rgba(255, 60, 60, 0.35);
+  color: #ff4444;
+}
+
+.notification-default-action {
+  border-radius: 22px;
+  padding: 13px 16px;
+  margin: 0;
+  background: transparent;
+}
+
+.notification-default-action:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  border: none;
+  color: rgba(200, 200, 220, 0.4);
+  min-width: 18px;
+  min-height: 18px;
+  padding: 0;
+  margin: 10px 10px 0 0;
+  font-size: 11px;
+  transition: all 150ms ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 75, 75, 0.28);
+  color: #ff6b6b;
+}
+
+.notification-app-icon {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.notification-app-name {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(99, 160, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1px;
+}
+
+.notification-summary {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(242, 242, 250, 0.96);
+  margin-bottom: 2px;
+}
+
+.notification-body {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(165, 165, 190, 0.78);
+  line-height: 1.45;
+}
+
+.notification-time {
+  font-size: 10px;
+  color: rgba(120, 120, 148, 0.45);
+  margin-top: 3px;
+}
+
+.notification-action {
+  background: rgba(99, 160, 255, 0.09);
+  border-radius: 12px;
+  border: 1px solid rgba(99, 160, 255, 0.18);
+  color: rgba(99, 160, 255, 0.88);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 14px;
+  margin: 4px 4px 10px 4px;
+  transition: all 150ms ease;
+}
+
+.notification-action:hover {
+  background: rgba(99, 160, 255, 0.2);
+  border-color: rgba(99, 160, 255, 0.42);
+  color: #fff;
+}
+
+.widget-dnd {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.widget-dnd > switch {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(200, 200, 220, 0.85);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  min-height: 24px;
+  min-width: 48px;
+}
+
+.widget-dnd > switch:checked {
+  background: rgba(99, 160, 255, 0.85);
+  border-color: rgba(99, 160, 255, 0.6);
+}
+
+.widget-dnd > switch slider {
+  background: #ffffff;
+  border-radius: 50%;
+  min-width: 18px;
+  min-height: 18px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  margin: 2px;
+}
+
+.control-center-clear-all {
+  background: rgba(99, 160, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(99, 160, 255, 0.22);
+  color: rgba(99, 160, 255, 0.85);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 16px;
+  margin: 6px 0 2px 0;
+  letter-spacing: 0.02em;
+  transition: all 150ms ease;
+}
+
+.control-center-clear-all:hover {
+  background: rgba(99, 160, 255, 0.2);
+  border-color: rgba(99, 160, 255, 0.45);
+  color: #fff;
+}
+
+scrollbar {
+  background: transparent;
+  min-width: 3px;
+}
+
+scrollbar slider {
+  background: rgba(99, 160, 255, 0.18);
+  border-radius: 4px;
+  min-width: 3px;
+  min-height: 40px;
+}
+
+scrollbar slider:hover {
+  background: rgba(99, 160, 255, 0.38);
+}
+
+.notifications-list-empty-state {
+  color: rgba(140, 140, 165, 0.5);
+  font-size: 13px;
 }

@@ -1,18 +1,16 @@
 configuration {
-    modi: "drun,run,window";
-    show-icons: true;
-    icon-theme: "Papirus-Dark";
-    display-drun: "";
-    display-run: "";
-    display-window: "";
+    modi:                "drun";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
     drun-display-format: "{name}";
-    font: "Inter 12";
-    
-    case-sensitive: false;
-    sort: true;
-    sorting-method: "fzf";
-    
-    terminal: "ghostty";
+    display-drun:        "";
+    lines:               5;
+    columns:             1;
+    fixed-num-lines:     true;
+    font:                "Cantarell 13";
+    location:            0;        /* center */
+    hide-scrollbar:      true;
+    sidebar-mode:        false;
 }
 
-@theme "~/.config/rofi/rose-pine.rasi"
+@theme "theme.rasi"

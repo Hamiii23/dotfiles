@@ -1,0 +1,150 @@
+* {
+    bg:          rgba(16,  16,  22,  97%);
+    bg-alt:      rgba(22,  22,  32,  97%);
+    bg-selected: rgba(18,  20,  30,  99%);
+    border-col:  rgba(99,  160, 255, 22%);
+    border-sub:  rgba(255, 255, 255, 8%);
+    fg:          rgba(242, 242, 250, 96%);
+    fg-dim:      rgba(165, 165, 190, 78%);
+    accent:      rgba(99,  160, 255, 100%);
+    accent-dim:  rgba(99,  160, 255, 75%);
+    urgent-bg:   rgba(28,  16,  16,  99%);
+    urgent-col:  rgba(255, 75,  75,  35%);
+    urgent-fg:   rgba(255, 180, 180, 90%);
+    none:        rgba(0,   0,   0,   0%);
+
+    background-color: @none;
+    text-color:       @fg;
+    border:           0px;
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
+}
+
+window {
+    width:            480px;
+    background-color: @bg;
+    border:           1px;
+    border-color:     @border-sub;
+    border-radius:    20px;
+    padding:          12px;
+}
+
+mainbox {
+    background-color: @none;
+    children:         [ inputbar, listview ];
+    spacing:          10px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border-sub;
+    border-radius:    14px;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: @none;
+    text-color:       @accent-dim;
+    font:             "Cantarell Bold 13";
+}
+
+entry {
+    background-color: @none;
+    text-color:       @fg;
+    placeholder:      "Search apps...";
+    placeholder-color: @fg-dim;
+    cursor:           text;
+}
+
+listview {
+    background-color: @none;
+    lines:            5;
+    columns:          1;
+    fixed-height:     true;
+    spacing:          4px;
+    scrollbar:        false;
+}
+
+element {
+    background-color: @none;
+    border-radius:    12px;
+    padding:          8px 12px;
+    spacing:          12px;
+    children:         [ element-icon, element-text ];
+    orientation:      horizontal;
+}
+
+element normal.normal {
+    background-color: @none;
+    text-color:       @fg;
+}
+
+element normal.urgent {
+    background-color: @urgent-bg;
+    text-color:       @urgent-fg;
+}
+
+element normal.active {
+    background-color: @none;
+    text-color:       @accent;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    border:           1px;
+    border-color:     @border-col;
+    text-color:       @fg;
+}
+
+element selected.urgent {
+    background-color: @urgent-bg;
+    border:           1px;
+    border-color:     @urgent-col;
+    text-color:       @urgent-fg;
+}
+
+element selected.active {
+    background-color: @bg-selected;
+    border:           1px;
+    border-color:     @border-col;
+    text-color:       @accent;
+}
+
+element alternate.normal {
+    background-color: @none;
+    text-color:       @fg;
+}
+
+element alternate.urgent {
+    background-color: @none;
+    text-color:       @urgent-fg;
+}
+
+element alternate.active {
+    background-color: @none;
+    text-color:       @accent;
+}
+
+element-icon {
+    background-color: @none;
+    size:             36px;
+    border-radius:    10px;
+}
+
+element-text {
+    background-color: @none;
+    text-color:       @fg;
+    vertical-align:   0.5;
+    highlight:        bold;
+}
+
+error-message {
+    background-color: @bg;
+    border-radius:    14px;
+    padding:          20px;
+    text-color:       @fg-dim;
+}
