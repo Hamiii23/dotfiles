@@ -36,7 +36,7 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -s '^[f' 'tmux-sessionizer\n'
+bindkey -s '^[t' 'tmux-sessionizer\n'
 bindkey -s '^[s' 'session-switcher\n'
 bindkey -s '^[o' 'tmux-windowizer\n'
 

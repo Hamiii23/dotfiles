@@ -26,7 +26,7 @@ map("n", "Q", "<nop>")
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- Tmux
-map("n", "<A-f>", function()
+map("n", "<A-t>", function()
 	vim.fn.system("tmux display-popup -E -w 80% -h 60% tmux-sessionizer")
 end)
 map("n", "<A-o>", function()
