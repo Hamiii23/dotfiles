@@ -115,7 +115,7 @@
 
 .notification-default-action {
   border-radius: 22px;
-  padding: 13px 16px;
+  padding: 14px 18px;
   margin: 0;
   background: transparent;
 }
@@ -142,11 +142,11 @@
   color: #ff6b6b;
 }
 
-.notification-app-icon {
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 10px;
-  margin-right: 10px;
+.notification-app-icon,
+.notification-app-icon * {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 12px;
 }
 
 .notification-app-name {
@@ -156,6 +156,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 1px;
+  padding-left: 10px;
 }
 
 .notification-summary {
@@ -163,6 +164,7 @@
   font-weight: 600;
   color: rgba(242, 242, 250, 0.96);
   margin-bottom: 2px;
+  padding-left: 10px;
 }
 
 .notification-body {
@@ -170,6 +172,7 @@
   font-weight: 400;
   color: rgba(165, 165, 190, 0.78);
   line-height: 1.45;
+  padding-left: 10px;
 }
 
 .notification-time {

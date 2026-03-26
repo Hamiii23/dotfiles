@@ -15,7 +15,7 @@ mkdir -p ~/.local/bin ~/Downloads ~/Documents ~/Desktop ~/dev ~/sandbox ~/Pictur
 
 # Base packages
 sudo pacman -S --needed \
-    ghostty waybar swww swaync tmux rofi hypridle hyprlock thunar \
+    ghostty waybar awww swaync tmux rofi hypridle hyprlock thunar \
     firefox zsh fzf \
     wl-clipboard cliphist network-manager-applet brightnessctl \
     playerctl nwg-look lazygit vlc swayimg zip unzip p7zip ripgrep \

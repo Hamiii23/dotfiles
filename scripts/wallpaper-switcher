@@ -29,6 +29,6 @@ WALLPAPER_PATH=$(echo "$WALLPAPER_LIST" | grep "/$SELECTED\.")
 echo "$WALLPAPER_PATH" >"$CACHE_FILE"
 
 # Set wallpaper with swww
-swww img "$WALLPAPER_PATH" --transition-type fade --transition-duration 2 --transition-fps 60
+awww img "$WALLPAPER_PATH" --transition-type fade --transition-duration 2 --transition-fps 60
 
 notify-send "Wallpaper Changed" "$SELECTED"
