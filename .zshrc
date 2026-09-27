@@ -43,6 +43,7 @@ setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_find_no_dups
+setopt autocd
 
 # Completion styling
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"

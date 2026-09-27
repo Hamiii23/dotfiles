@@ -22,7 +22,7 @@ selected_name=$(basename "$selected" | tr . _)
 
 # If not in tmux, just cd to the directory
 if [[ -z $TMUX ]]; then
-    cd "$selected"
+    cd "$selected" || exit
     exit 0
 fi
 

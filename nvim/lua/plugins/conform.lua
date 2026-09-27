@@ -15,7 +15,7 @@ require("conform").setup({
 		rust = { "rustfmt" },
 		sh = { "shfmt" },
 		bash = { "shfmt" },
-		prisma = { "prismaFmt" },
+		prisma = { "prettier" },
 		html = { "prettier" },
 		css = { "prettier" },
 		python = { "ruff_format", "ruff_organize_imports" },

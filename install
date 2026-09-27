@@ -9,6 +9,7 @@ sudo pacman -S --needed \
 sudo pacman -S --needed \
     pipewire pipewire-pulse pipewire-alsa wireplumber pavucontrol
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
+sudo systemctl enable --now NetworkManager.service
 
 # File directory
 mkdir -p ~/.local/bin ~/Downloads ~/Documents ~/Desktop ~/dev ~/sandbox ~/Pictures ~/Music ~/Videos
@@ -46,7 +47,7 @@ if ! command -v paru &>/dev/null; then
 fi
 
 # AUR Packages
-paru -S --needed neovim-git wlogout wl-clip-persist hyprshot
+paru -S --needed neovim-git wlogout wl-clip-persist hyprshot helium-browser-bin
 
 # Fonts
 paru -S --needed maplemono-nf-cn-unhinted

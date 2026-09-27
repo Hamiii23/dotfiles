@@ -73,3 +73,12 @@ vim.api.nvim_create_autocmd("FileType", {
 map("n", "<leader>pu", function()
 	vim.pack.update()
 end, { desc = "Update plugins" })
+
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", require("undotree").open)
+
+vim.keymap.set("n", "<leader><leader>", function()
+	local session = vim.fn.stdpath("state") .. "/restart_session.vim"
+	vim.cmd("mksession! " .. vim.fn.fnameescape(session))
+	vim.cmd("restart source " .. vim.fn.fnameescape(session))
+end, { desc = "Restart Neovim" })

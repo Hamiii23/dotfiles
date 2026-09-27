@@ -1,9 +1,31 @@
 #!/usr/bin/env bash
 
-# Show clipboard history using rofi and copy the selected entry back
+while true; do
+    selected=$(cliphist list | rofi -dmenu \
+        -p "Clipboard" \
+        -theme ~/.config/rofi/clipboard.rasi \
+        -mesg "Enter: copy   Alt+d: delete entry   Alt+w: clear all" \
+        -kb-custom-1 "Alt+d" \
+        -kb-custom-2 "Alt+w")
 
-selected=$(cliphist list | rofi -dmenu -p "Clipboard:")
+    exit_code=$?
 
-if [ -n "$selected" ]; then
-    cliphist decode <<<"$selected" | wl-copy
-fi
+    case $exit_code in
+    0)
+        [ -n "$selected" ] && cliphist decode <<<"$selected" | wl-copy
+        break
+        ;;
+    1)
+        break
+        ;;
+    10)
+        [ -n "$selected" ] && cliphist delete <<<"$selected"
+        ;;
+    11)
+        cliphist wipe
+        ;;
+    *)
+        break
+        ;;
+    esac
+done

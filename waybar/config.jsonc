@@ -1,26 +1,24 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
-    "spacing": 8,
-    "margin-left": 10,
-    "margin-right": 10,
-    "modules-left": [
-        "custom/media",
-        "custom/weather"
-    ],
+    "margin-top": 8,
+    "margin-left": 60,
+    "margin-right": 60,
+    "height": 40,
+    "spacing": 0,
+    "modules-left": [],
     "modules-center": [
-        "hyprland/mode",
-        "clock",
         "hyprland/workspaces",
-        "battery"
-    ],
-    "modules-right": [
+        "mpris",
+        "clock",
+        "custom/weather",
         "pulseaudio",
         "network",
         "tray",
-        "custom/notification"
+        "battery",
+        "custom/swaync"
     ],
+    "modules-right": [],
     "hyprland/workspaces": {
         "on-click": "activate",
         "persistent-workspaces": {
@@ -28,8 +26,18 @@
             "2": [],
             "3": []
         },
-        "format": "{icon}",
+        "format": "{id}",
         "sort-by-number": true
+    },
+    "mpris": {
+        "format": " {title}",
+        "format-paused": " {title}",
+        "format-stopped": "",
+        "max-length": 30,
+        "tooltip": true,
+        "tooltip-format": "{title} — {artist}",
+        "interval": 1,
+        "on-click": "playerctl play-pause"
     },
     "clock": {
         "format": "󰥔 {:%I:%M %p}",
@@ -40,50 +48,21 @@
             "weeks-pos": "right",
             "on-scroll": 1,
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc94b'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months": "<span color='#63a0ff'><b>{}</b></span>",
+                "days": "<span color='#c8c8dc'>{}</span>",
+                "weeks": "<span color='#6a6a8a'>W{}</span>",
+                "weekdays": "<span color='#8888aa'><b>{}</b></span>",
+                "today": "<span color='#ff6b6b'><b><i>{}</i></b></span>"
             }
-        }
-    },
-    "battery": {
-        "interval": 30,
-        "states": {
-            "good": 80,
-            "warning": 30,
-            "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-icons": [
-            "󰂃",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ],
-        "tooltip-format": "{timeTo}\nCapacity: {capacity}%\nHealth: {health}%"
+        "on-click-right": "mode"
     },
-    "network": {
-        "interval": 3,
-        "format-wifi": "󰤨  {essid}",
-        "format-ethernet": "󰈀 Ethernet",
-        "format-linked": "󰤭  {ifname}",
-        "format-disconnected": "󰤮 Disconnected",
-        "format-alt": "󰩟 {ipaddr}/{cidr}",
-        "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
-        "tooltip-format-wifi": "󰤨 {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
-        "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits} ↑ / {bandwidthDownBits} ↓",
-        "on-click-right": "nm-connection-editor"
+    "custom/weather": {
+        "exec": "~/.local/bin/waybar-weather 2>/dev/null || echo '{\"text\": \"󰖐 --°C\", \"class\": \"weather-error\"}'",
+        "interval": 600,
+        "format": "{}",
+        "return-type": "json",
+        "tooltip": true
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -108,38 +87,67 @@
         "on-click-right": "pavucontrol",
         "tooltip-format": "Volume: {volume}%\nDevice: {desc}"
     },
+    "network": {
+        "interval": 3,
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 Ethernet",
+        "format-linked": "󰤭 {ifname}",
+        "format-disconnected": "󰤮 Disconnected",
+        "format-alt": "󰩟 {ipaddr}/{cidr}",
+        "tooltip-format": "Network: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nStrength: {signalStrength}%",
+        "tooltip-format-wifi": "󰤨 {essid}\nFrequency: {frequency}MHz\nStrength: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpBits} ↑ / {bandwidthDownBits} ↓",
+        "on-click-right": "nm-connection-editor"
+    },
     "tray": {
-        "icon-size": 18,
-        "spacing": 10,
+        "icon-size": 16,
+        "spacing": 8,
         "show-passive-items": true
     },
-    "custom/media": {
-        "exec": "~/.local/bin/media-controller",
-        "interval": 2,
-        "format": "{}",
-        "max-length": 40,
-        "return-type": "json"
+    "battery": {
+        "interval": 30,
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": [
+            "󰂃",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "{timeTo}\nCapacity: {capacity}%\nHealth: {health}%"
     },
-    "custom/weather": {
-        "exec": "~/.local/bin/waybar-weather",
-        "interval": 600,
-        "format": "{}",
-        "return-type": "json",
-        "tooltip": true
-    },
-    "custom/notification": {
+    "custom/swaync": {
+        "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "󰂚",
+            "notification": "<span foreground='#63a0ff'>󰂚</span>",
             "none": "󰂜",
-            "dnd-notification": "󰂛",
-            "dnd-none": "󰪑"
+            "dnd-notification": "<span foreground='#63a0ff'>󰂛</span>",
+            "dnd-none": "󰪑",
+            "inhibited-notification": "<span foreground='#63a0ff'>󰂚</span>",
+            "inhibited-none": "󰂜",
+            "dnd-inhibited-notification": "<span foreground='#63a0ff'>󰂛</span>",
+            "dnd-inhibited-none": "󰪑"
         },
         "return-type": "json",
+        "exec-if": "which swaync-client",
         "exec": "swaync-client -swb",
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
-        "escape": true,
-        "tooltip": false
+        "escape": true
     }
 }

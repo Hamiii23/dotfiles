@@ -1,136 +1,135 @@
 * {
-  font-family: "Caskaydia Cove Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-family: "Caskaydia Cove Nerd Font", "Cantarell", sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #d9d7e0;
   border: none;
-  box-shadow: none;
   padding: 2px;
+  margin: 0;
 }
 
 window#waybar {
   background: transparent;
-  border-radius: 12px;
-  padding: 8px 10px;
-  margin: 6px 12px;
-  border: none;
-  box-shadow: none;
+}
+
+.modules-center {
+  background: rgba(16, 16, 22, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 0 10px;
 }
 
 #workspaces,
-#window,
+#mpris,
 #clock,
-#battery,
+#custom-weather,
 #pulseaudio,
 #network,
 #tray,
-#custom-media,
-#custom-weather,
-#custom-notification {
+#battery,
+#custom-swaync {
+  color: rgba(200, 200, 220, 0.85);
+  background: transparent;
+  padding: 4px 14px;
   margin: 0 3px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  background: rgba(20, 21, 26, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.035);
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
-  min-width: 50px;
+  min-width: 20px;
 }
 
 #workspaces {
   padding: 2px 4px;
-  border-radius: 10px;
+  margin: 0 3px;
 }
 
 #workspaces button {
+  color: rgba(120, 120, 148, 0.4);
   background: transparent;
-  color: #6f7282;
-  margin: 0 2px;
-  padding: 4px 8px;
-  border-radius: 10px;
-  transition: all 0.2s ease;
+  border: none;
+  border-radius: 12px;
+  padding: 1px 11px;
   font-weight: 600;
+  font-size: 12px;
+  transition: all 200ms ease;
+  min-width: 0;
 }
 
-#workspaces button:hover:not(.active) {
-  color: #d9d7e0;
+#workspaces button:hover {
+  color: rgba(200, 200, 220, 0.75);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 #workspaces button.active {
-  background: rgba(180, 170, 255, 0.18);
-  color: #ffffff;
-  padding: 4px 20px;
+  background: rgba(99, 160, 255, 0.22);
+  color: rgba(99, 160, 255, 0.95);
+  font-weight: 700;
+  padding: 1px 14px;
+  border: none;
 }
 
 #workspaces button.urgent {
-  background: rgba(255, 90, 90, 0.85);
-  color: #14151a;
+  background: rgba(255, 75, 75, 0.2);
+  color: rgba(255, 110, 110, 0.9);
+}
+
+#mpris {
+  color: rgba(99, 160, 255, 0.8);
+  font-style: italic;
+  padding: 4px 16px 4px 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 0 4px 0 0;
+}
+
+#mpris.paused {
+  color: rgba(150, 150, 175, 0.4);
+}
+
+#mpris.stopped {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  color: transparent;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0;
 }
 
 #clock {
+  color: rgba(242, 242, 250, 0.96);
   font-weight: 600;
-  letter-spacing: 0.4px;
-  color: #ffffff;
-}
-
-#battery {
-  color: #bfc3d9;
-}
-
-#battery.good {
-  color: #9ad1b3;
-}
-#battery.warning {
-  color: #f0c674;
-}
-#battery.critical {
-  color: #ff6b6b;
-}
-#battery.charging {
-  color: #7fb4ff;
-}
-
-#network {
-  color: #b7c0ff;
-}
-
-#network.disconnected {
-  color: #ff6b6b;
-}
-
-#pulseaudio {
-  color: #c6b7ff;
-}
-
-#pulseaudio.muted {
-  color: #6f7282;
-}
-
-#custom-media {
-  color: #a6dcef;
-  font-style: italic;
+  letter-spacing: 0.02em;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 18px;
+  margin: 0 4px;
 }
 
 #custom-weather {
-  color: #ffd699;
-  font-weight: 600;
+  color: rgba(180, 180, 210, 0.8);
 }
 
 #custom-weather.weather-error {
-  color: #ff6b6b;
+  color: rgba(255, 100, 100, 0.8);
 }
 
-#custom-notification {
-  color: #a6dcef;
-  font-weight: 700;
-  padding: 6px 12px;
-  min-width: 20px;
-  border-radius: 15px;
+#pulseaudio {
+  color: rgba(200, 200, 220, 0.85);
+}
+
+#pulseaudio.muted {
+  color: rgba(140, 140, 165, 0.4);
+}
+
+#network {
+  color: rgba(200, 200, 220, 0.85);
+}
+
+#network.disconnected {
+  color: rgba(255, 100, 100, 0.85);
 }
 
 #tray {
-  padding: 6px 12px;
+  padding: 4px 12px;
+  margin: 0 3px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 #tray > .passive {
@@ -138,6 +137,52 @@ window#waybar {
 }
 
 #tray > .needs-attention {
-  background: rgba(255, 90, 90, 0.2);
+  background: rgba(255, 75, 75, 0.15);
   border-radius: 6px;
+}
+
+#battery {
+  color: rgba(200, 200, 220, 0.85);
+}
+
+#battery.charging,
+#battery.plugged {
+  color: rgba(99, 160, 255, 0.9);
+}
+
+#battery.warning:not(.charging) {
+  color: rgba(255, 180, 80, 0.9);
+}
+
+#battery.critical:not(.charging) {
+  color: rgba(255, 100, 100, 0.95);
+}
+
+#custom-swaync {
+  color: rgba(180, 180, 205, 0.6);
+  font-size: 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 14px 4px 16px;
+  margin: 0 0 0 4px;
+}
+
+#custom-swaync.notification {
+  color: rgba(99, 160, 255, 0.9);
+}
+
+#custom-swaync.dnd-notification,
+#custom-swaync.dnd-none {
+  color: rgba(140, 140, 165, 0.38);
+}
+
+tooltip {
+  background: rgba(16, 16, 22, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 6px 10px;
+}
+
+tooltip label {
+  color: rgba(242, 242, 250, 0.92);
+  font-size: 12px;
 }

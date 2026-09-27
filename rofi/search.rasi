@@ -1,0 +1,105 @@
+* {
+    bg:          rgba(16,  16,  22,  97%);
+    bg-alt:      rgba(22,  22,  32,  97%);
+    border-col:  rgba(99,  160, 255, 22%);
+    border-sub:  rgba(255, 255, 255, 8%);
+    fg:          rgba(242, 242, 250, 96%);
+    fg-dim:      rgba(165, 165, 190, 78%);
+    accent:      rgba(99,  160, 255, 100%);
+    accent-dim:  rgba(99,  160, 255, 75%);
+    none:        rgba(0,   0,   0,   0%);
+
+    background-color: @none;
+    text-color:       @fg;
+    border:           0px;
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
+}
+
+window {
+    width:            560px;
+    background-color: @bg;
+    border:           1px;
+    border-color:     @border-sub;
+    border-radius:    20px;
+    padding:          12px;
+}
+
+mainbox {
+    background-color: @none;
+    children:         [ inputbar, message, listview ];
+    spacing:          8px;
+}
+
+listview {
+    background-color: @none;
+    lines:             8;
+    scrollbar:         false;
+    spacing:           2px;
+    fixed-height:      false;
+}
+
+element {
+    background-color: @none;
+    text-color:        @fg-dim;
+    border-radius:     10px;
+    padding:           7px 10px;
+}
+
+element selected {
+    background-color: @bg-alt;
+    text-color:        @fg;
+    border:            1px;
+    border-color:      @border-col;
+}
+
+element-text {
+    background-color: @none;
+    text-color:        inherit;
+    font:              "JetBrainsMono Nerd Font 11";
+    vertical-align:    0.5;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border-col;
+    border-radius:    14px;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: @none;
+    text-color:       @accent-dim;
+    font:             "Cantarell Bold 13";
+}
+
+entry {
+    background-color:  @none;
+    text-color:        @fg;
+    placeholder:        "!bang query or a URL...";
+    placeholder-color:  @fg-dim;
+    font:               "JetBrainsMono Nerd Font 12";
+    cursor:             text;
+}
+
+message {
+    background-color: @none;
+    padding:           2px 6px 0px 6px;
+}
+
+textbox {
+    background-color: @none;
+    text-color:       @fg-dim;
+    font:             "Cantarell 10";
+}
+
+error-message {
+    background-color: @bg;
+    border-radius:    14px;
+    padding:          20px;
+    text-color:       @fg-dim;
+}
