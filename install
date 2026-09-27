@@ -11,6 +11,14 @@ sudo pacman -S --needed \
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 sudo systemctl enable --now NetworkManager.service
 
+# zram (compressed swap in RAM)
+sudo pacman -S --needed zram-generator
+sudo tee /etc/systemd/zram-generator.conf >/dev/null <<'EOF'
+[zram0]
+zram-size = min(ram / 2, 4096)
+compression-algorithm = zstd
+EOF
+
 # File directory
 mkdir -p ~/.local/bin ~/Downloads ~/Documents ~/Desktop ~/dev ~/sandbox ~/Pictures ~/Music ~/Videos
 
